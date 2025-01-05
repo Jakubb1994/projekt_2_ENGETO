@@ -17,6 +17,11 @@ def generate_secret_number():
 def validate_guess(guess):
     # Validates the user's guess for correct lenght, digits and uniqueness
     if len(guess) != 4 or not guess.isdigit():
-        return False
-    print("Input must be 4-digit number")
+        return False, "Input must be a 4-digit number."
+        if len(set(guess)) != 4:
+            return False, "Digits must be unique."
+        if guess[0] == '0':
+            return False, "Number cannot start with 0."
+        return True, ""
+        
     
