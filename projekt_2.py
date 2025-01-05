@@ -13,3 +13,10 @@ def generate_secret_number():
     digits.remove(first_digit)
     other_digits = random.sample(digits + [0], 3)
     return str(first_digit) + ''.join(map(str, other_digits))
+
+def validate_guess(guess):
+    # Validates the user's guess for correct lenght, digits and uniqueness
+    if len(guess) != 4 or not guess.isdigit():
+        return False
+    print("Input must be 4-digit number")
+    
