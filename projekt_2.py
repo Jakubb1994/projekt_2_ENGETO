@@ -26,4 +26,18 @@ def validate_guess(guess):
         
 def evaluate_guess(secret, guess):
     """Evalutes the guess and returns the number of bulls and cows"""
-    
+    bulls = sum(1 for s, g in zip(secret, guess) if s == g)
+    cows = sum(1 for g in guess if g in secret) - bulls
+    return bulls, cows
+
+def save_statistics(attempts, duration):
+    """Saves game statistics to a text file and displays stats for the current game."""
+    with open("game_statistics.txt", "a") as file:
+        file.write(f"Attempts: {attempts}, Time: {round(duration, 2)} seconds\n")
+    print("Statistics for this game:")
+    print(f"- Total attempts: {attempts}")
+    print(f"- Total time: {int(duration // 60)} minutes and {int(duration % 60)} seconds")
+
+def display_separator():
+    """Display a visual separator."""
+    print("=" * 50)
