@@ -73,3 +73,12 @@ def view_statistics():
 
         print(f"{bulls} bull{'s' if bulls != 1 else ''}, {cows} cow{'s' if cows != 1 else ''}")
         display_separator()
+
+    if bulls == 4:
+            end_time = time.time()
+            duration = end_time - start_time
+            print(f"Correct, you've guessed the right number in {attempts} guesses!")
+            print(f"It took you {round(duration, 2)} seconds.")
+            print(f"Total time: {int(duration // 60)} minutes and {int(duration % 60)} seconds.")
+            print("That's amazing!")
+            display_separator()
