@@ -41,3 +41,15 @@ def save_statistics(attempts, duration):
 def display_separator():
     """Display a visual separator."""
     print("=" * 50)
+
+def view_statistics():
+    """Displays all saved statistics from the game_statistics.txt file."""
+    try:
+        with open("game_statistics.txt", "r") as file:
+            print("\n=== Game Statistics ===")
+            for line in file:
+                print(line.strip())
+            print("=======================\n")
+    except FileNotFoundError:
+        print("No statistics available. Play a game first!\n")
+
