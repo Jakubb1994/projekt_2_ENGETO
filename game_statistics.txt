@@ -1,2 +1,0 @@
-Attempts: 4, Time: 36.78 seconds
-Attempts: 19, Time: 126.53 seconds
