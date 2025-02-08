@@ -5,6 +5,7 @@ author: Jakub Prajzler
 email: prajzler25@gmail.com
 """
 import random
+import time
 
 def generate_secret_number():
     """Generates a random 4-digit number with unique digits, not starting with 0"""
@@ -53,3 +54,19 @@ def view_statistics():
     except FileNotFoundError:
         print("No statistics available. Play a game first!\n")
 
+    secret_number = generate_secret_number()
+    attempts = 0
+    start_time = time.time()
+
+    while True:
+        guess = input("Enter a number: ")
+        display_separator()
+        is_valid, message = validate_guess(guess)
+    
+        if not is_valid:
+            print(message)
+            display_separator()
+            continue
+
+        attempts += 1
+        bulls, cows = evaluate_guess(secret_number, guess)
