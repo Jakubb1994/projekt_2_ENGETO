@@ -54,6 +54,7 @@ def view_statistics():
     except FileNotFoundError:
         print("No statistics available. Play a game first!\n")
 
+def play_game():
     secret_number = generate_secret_number()
     attempts = 0
     start_time = time.time()
@@ -62,7 +63,7 @@ def view_statistics():
         guess = input("Enter a number: ")
         display_separator()
         is_valid, message = validate_guess(guess)
-    
+
         if not is_valid:
             print(message)
             display_separator()
@@ -74,7 +75,7 @@ def view_statistics():
         print(f"{bulls} bull{'s' if bulls != 1 else ''}, {cows} cow{'s' if cows != 1 else ''}")
         display_separator()
 
-    if bulls == 4:
+        if bulls == 4:
             end_time = time.time()
             duration = end_time - start_time
             print(f"Correct, you've guessed the right number in {attempts} guesses!")
@@ -82,3 +83,23 @@ def view_statistics():
             print(f"Total time: {int(duration // 60)} minutes and {int(duration % 60)} seconds.")
             print("That's amazing!")
             display_separator()
+
+            save_statistics(attempts, duration)
+            print("Game statistics have been saved.")
+            break
+
+if __name__ == "__main__":
+    while True:
+        print("1. Play game")
+        print("2. View statistics")
+        print("3. Exit")
+        choice = input("Choose an option: ")
+        if choice == "1":
+            play_game()
+        elif choice == "2":
+            view_statistics()
+        elif choice == "3":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
