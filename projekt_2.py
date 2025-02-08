@@ -70,3 +70,6 @@ def view_statistics():
 
         attempts += 1
         bulls, cows = evaluate_guess(secret_number, guess)
+
+        print(f"{bulls} bull{'s' if bulls != 1 else ''}, {cows} cow{'s' if cows != 1 else ''}")
+        display_separator()
